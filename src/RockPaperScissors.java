@@ -3,9 +3,9 @@ import java.util.Scanner;
 public class RockPaperScissors {
     public static void main(String[] args) {
 
-        char player1 = 'Z';
-        char player2 = 'Z';
-        char playAgain = 'Z';
+        String player1 = "Z";
+        String player2 = "Z";
+        String playAgain = "Z";
         boolean playAgainValid = false;
 
         do {
@@ -22,11 +22,11 @@ public class RockPaperScissors {
 
             do {
                 System.out.println("Play again? [Y/N]");
-                playAgain = scan.next().toUpperCase().charAt(0);
-                if (playAgain == 'Y') {
+                playAgain = scan.next();
+                if (playAgain.equalsIgnoreCase("Y")) {
                     playAgainValid = true;
                     playAgainHasResponse = true;
-                } else if (playAgain == 'N') {
+                } else if (playAgain.equalsIgnoreCase("N")) {
                     System.out.println("Thanks for playing!");
                     System.exit(0);
                 } else {
@@ -37,15 +37,15 @@ public class RockPaperScissors {
     }
 
 
-    public static char DetermineInput(char input) {
+    public static String DetermineInput(String input) {
 
         Scanner scan = new Scanner(System.in);
         boolean validInput = false;
 
         do {
             if (scan.hasNextLine()) {
-                input = scan.next().toUpperCase().charAt(0);
-                if (input == 'R' || input == 'P' || input == 'S') {
+                input = scan.next();
+                if (input.equalsIgnoreCase("R") || input.equalsIgnoreCase("P") || input.equalsIgnoreCase("S")) {
                     validInput = true;
                 } else {
                     System.out.println("You have inputted an invalid response. Please try again.");
@@ -59,27 +59,27 @@ public class RockPaperScissors {
         return input;
     }
 
-    public static void DetermineWinner(Character input1, Character input2) {
+    public static void DetermineWinner(String input1, String input2) {
 
-        if (input1 == input2) {
+        if (input1.equalsIgnoreCase(input2)) {
             System.out.println("It's a tie!");
-        } else if (input1 == 'R') {
-            if (input2 == 'S') {
-                System.out.println("Rock breaks scissors - " + input1 + " wins!");
+        } else if (input1.equalsIgnoreCase("R")) {
+            if (input2.equalsIgnoreCase("S")) {
+                System.out.println("Rock breaks scissors - Player 1 wins!");
             } else {
-                System.out.println("Paper covers rock - " + input2 + " wins!");
+                System.out.println("Paper covers rock - Player 2 wins!");
             }
-        } else if (input1 == 'S') {
-            if (input2 == 'R') {
-                System.out.println("Rock breaks scissors - " + input2 + " wins!");
+        } else if (input1.equalsIgnoreCase("S")) {
+            if (input2.equalsIgnoreCase("R")) {
+                System.out.println("Rock breaks scissors - Player 2 wins!");
             } else {
-                System.out.println("Scissors cuts paper - " + input1 + " wins!");
+                System.out.println("Scissors cuts paper - Player 1 wins!");
             }
-        } else if (input1 == 'P') {
-            if (input2 == 'R') {
-                System.out.println("Paper covers rock - " + input1 + " wins!");
+        } else if (input1.equalsIgnoreCase("P")) {
+            if (input2.equalsIgnoreCase("R")) {
+                System.out.println("Paper covers rock - Player 1 wins!");
             } else {
-                System.out.println("Scissors cuts paper - " + input2 + " wins!");
+                System.out.println("Scissors cuts paper - Player 2 wins!");
             }
 
         }
